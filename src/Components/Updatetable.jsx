@@ -29,7 +29,7 @@ const Updatetable = () => {
 
     const handleSubmit = () => {
         if (isEdit) {
-            axios.put(`http://localhost:3001/employees/${currentEmployee.id}`, currentEmployee)
+            axios.put(`https://employee-crud-server.onrender.com/employees/${currentEmployee.id}`, currentEmployee)
                 .then(response => {
                     setEmployees(employees.map(emp =>
                         emp.id === currentEmployee.id ? response.data : emp
@@ -38,7 +38,7 @@ const Updatetable = () => {
                 })
                 .catch(error => console.error('Error updating employee:', error));
         } else {
-            axios.post('http://localhost:3001/employees', currentEmployee)
+            axios.post('https://employee-crud-server.onrender.com/employees', currentEmployee)
                 .then(response => {
                     setEmployees([...employees, response.data]);
                     handleClose();
@@ -48,7 +48,7 @@ const Updatetable = () => {
     };
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/employees/${id}`)
+        axios.delete(`https://employee-crud-server.onrender.com/employees/${id}`)
             .then(() => setEmployees(employees.filter(emp => emp.id !== id)))
             .catch(error => console.error('Error deleting employee:', error));
     };
